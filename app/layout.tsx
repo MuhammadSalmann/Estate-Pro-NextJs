@@ -1,4 +1,5 @@
 import '@/assets/styles/globals.css'
+import Navbar from '@/components/Navbar'
 import { ReactNode } from 'react'
 
 // For SEO and this will be used in by default every page if you dont specify this in every page
@@ -16,7 +17,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <html lang="en">
       <body>
-        <div>{children}</div>
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   )
