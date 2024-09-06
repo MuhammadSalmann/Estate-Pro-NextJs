@@ -1,6 +1,7 @@
 import '@/assets/styles/globals.css'
-import Navbar from '@/components/Navbar'
 import { ReactNode } from 'react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 // For SEO and this will be used in by default every page if you dont specify this in every page
 export const metadata = {
@@ -19,6 +20,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <body>
         <Navbar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
