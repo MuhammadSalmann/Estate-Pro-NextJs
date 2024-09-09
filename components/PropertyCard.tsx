@@ -1,57 +1,89 @@
-const PropertyCard = () => {
+import Image from "next/image";
+import Link from "next/link";
+import { FaBed, FaBath, FaRulerCombined, FaMoneyBill, FaMapMarker } from "react-icons/fa";
+
+const PropertyCard = ({ property } : any) => {
+  const getRateCard = () => {
+    const { rates } = property;
+
+    if (rates.monthly) {
+      return `${rates.monthly.toLocaleString()}/mon`;
+    } else if (rates.weekly) {
+      return `${rates.weekly.toLocaleString()}/wk`;
+    } else if (rates.nightly) {
+      return `${rates.nightly.toLocaleString()}/night`;
+    }
+  };
+
   return (
     <div className="relative rounded-xl bg-white shadow-md">
-      <img
-        src="images/properties/a1.jpg"
+      <Image
+        src={`/images/properties/${property.images[0]}`}
         alt=""
+        height={0}
+        width={0}
+        sizes="100vw"
         className="h-auto w-full rounded-t-xl"
       />
       <div className="p-4">
         <div className="mb-6 text-left md:text-center lg:text-left">
-          <div className="text-gray-600">Apartment</div>
-          <h3 className="text-xl font-bold">Boston Commons Retreat</h3>
+          <div className="text-gray-600">{property.type}</div>
+          <h3 className="text-xl font-bold">{property.name}</h3>
         </div>
         <h3 className="absolute right-[10px] top-[10px] rounded-lg bg-white px-4 py-2 text-right font-bold text-blue-500 md:text-center lg:text-right">
-          $4,200/mo
+          ${getRateCard()}
         </h3>
 
         <div className="mb-4 flex justify-center gap-4 text-gray-500">
           <p>
-            <i className="fa-solid fa-bed"></i> 3
+            <FaBed className="inline mr-2" /> {property.beds}{" "}
             <span className="md:hidden lg:inline">Beds</span>
           </p>
           <p>
-            <i className="fa-solid fa-bath"></i> 2
+            <FaBath className="inline mr-2" /> {property.baths}{" "}
             <span className="md:hidden lg:inline">Baths</span>
           </p>
           <p>
-            <i className="fa-solid fa-ruler-combined"></i>
-            1,500 <span className="md:hidden lg:inline">sqft</span>
+            <FaRulerCombined className="inline mr-2" />
+            {property.square_feet}{" "}
+            <span className="md:hidden lg:inline">sqft</span>
           </p>
         </div>
 
         <div className="mb-4 flex justify-center gap-4 text-sm text-green-900">
-          <p>
-            <i className="fa-solid fa-money-bill"></i> Weekly
-          </p>
-          <p>
-            <i className="fa-solid fa-money-bill"></i> Monthly
-          </p>
+          {property.rates.nightly && (
+            <p>
+              <FaMoneyBill className="inline mr-2" /> Nightly
+            </p>
+          )}
+          {property.rates.weekly && (
+            <p>
+              <FaMoneyBill className="inline mr-2" /> Weekly
+            </p>
+          )}
+          {property.rates.monthly && (
+            <p>
+              <FaMoneyBill className="inline mr-2" /> Monthly
+            </p>
+          )}
         </div>
 
         <div className="mb-5 border border-gray-100"></div>
 
         <div className="mb-4 flex flex-col justify-between lg:flex-row">
           <div className="mb-4 flex gap-2 align-middle lg:mb-0">
-            <i className="fa-solid fa-location-dot text-lg text-orange-700"></i>
-            <span className="text-orange-700"> Boston MA </span>
+            <FaMapMarker className="text-orange-700 mt-1" />
+            <span className="text-orange-700">
+              {" "}
+              {property.location.city} {property.location.state}{" "}
+            </span>
           </div>
-          <a
-            href="property.html"
+          <Link
+            href={`/properties/${property._id}`}
             className="h-[36px] rounded-lg bg-blue-500 px-4 py-2 text-center text-sm text-white hover:bg-blue-600"
           >
             Details
-          </a>
+          </Link>
         </div>
       </div>
     </div>
