@@ -6,7 +6,7 @@ const PropertiesPage = async () => {
 
   // sort properties by date
   properties.sort(
-    (a: any, b: any) => new Date(b.createdAt) - new Date(a.createdAt),
+    (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 
   return (
