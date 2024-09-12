@@ -2,6 +2,7 @@ import '@/assets/styles/globals.css'
 import { ReactNode } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AuthProvider from '@/components/AuthProvider'
 
 // For SEO and this will be used in by default every page if you dont specify this in every page
 export const metadata = {
@@ -16,13 +17,15 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </AuthProvider>
   )
 }
 
