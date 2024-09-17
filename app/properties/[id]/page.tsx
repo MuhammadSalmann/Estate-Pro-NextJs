@@ -12,6 +12,7 @@ const PropertyPage = () => {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(property)
 
   useEffect(() => {
     // fetchProperty(id).then((data) => {
