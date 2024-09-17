@@ -63,11 +63,63 @@ const PropertyAddForm = () => {
     images: [],
   });
 
-  const handleChange = () => {}
+  const handleChange = (e : any) => {
+    const { name, value } = e.target;
 
-  const handleAmenitiesChange = () => {}
+    // handle nested fields
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+      setFields((prevFields : any) => ({
+        ...prevFields,
+        [outerKey]: { ...prevFields[outerKey], [innerKey]: value },
+      }));
+    } else {
+      // handle regular fields
+      setFields((prevFields) => ({ ...prevFields, [name]: value }));
+    }
+  }
 
-  const handleImageChange = () => {}
+  const handleAmenitiesChange = (e: any) => {
+    const { value, checked } = e.target;
+
+    // // clone the array and add/remove the value
+    // const updatedAmenities = [...fields.amenities];
+    // if (checked) {
+    //   updatedAmenities.push(value);
+    // } else {
+    //   const index = updatedAmenities.indexOf(value);
+    //   if (index !== -1) updatedAmenities.splice(index, 1);
+    // }
+
+    // setFields((prevFields) => ({ ...prevFields, amenities: updatedAmenities }));
+    // OR
+    if (checked) {
+      setFields((prevFields) => ({
+        ...prevFields,
+        amenities: [...prevFields.amenities, value],
+      }));
+    } else {
+      setFields((prevFields) => ({
+        ...prevFields,
+        amenities: prevFields.amenities.filter((amenity) => amenity !== value),
+      }));
+    }
+  }
+
+  const handleImageChange = (e: any) => {
+    const { files } = e.target;
+
+    // clone images array
+    const updatedImages = [...fields.images];
+
+    // add the selected files to the array
+    for (const file of files) {
+      updatedImages.push(file);
+    }
+
+    // update the state
+    setFields((prevFields) => ({ ...prevFields, images: updatedImages }));
+  }
 
   useEffect(() => {
     setMounted(true); // for warning msg
@@ -99,7 +151,7 @@ const PropertyAddForm = () => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="mb-2 block font-bold text-gray-700">
+        <label htmlFor="name" className="mb-2 block font-bold text-gray-700">
           Listing Name
         </label>
         <input

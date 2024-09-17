@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="mb-4 flex flex-wrap justify-center md:mb-0 md:justify-start"></div>
         <div>
           <p className="mt-2 text-sm text-gray-500 md:mt-0">
-            &copy; {currYear} PropertyPulse. All rights reserved.
+            &copy; {currYear} EstatePro. All rights reserved.
           </p>
         </div>
       </div>
