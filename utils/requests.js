@@ -8,7 +8,9 @@ async function fetchProperties() {
         return [];
     }
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_API}/properties`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_API}/properties`, {
+      cache: "no-store",  // to display the property as soon as it is added
+    });
     if (!res.ok) {
       throw new Error("An error occurred while fetching the data");
     }

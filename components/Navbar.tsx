@@ -230,7 +230,7 @@ const Navbar = () => {
             </Link>
             {session && (
               <Link
-                href="/properties/add.html"
+                href="/properties/add"
                 className={`${pathname === "/properties/add" ? "bg-black" : ""} block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white`}
               >
                 Add Property
