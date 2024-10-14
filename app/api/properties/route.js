@@ -10,7 +10,6 @@ export const GET = async (request) => {
         const properties = await Property.find({});
         return new Response(JSON.stringify(properties), { status: 200 });
     } catch (error) {
-        console.log(first)
         return new Response('An error occurred', { status: 500 });
     }
 }
@@ -91,7 +90,6 @@ export const POST = async (request) => {
         return Response.redirect(`${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`);
     } catch (error) {
         console.log(error);
-        console.log(error)
         return new Response('Failed to Add Property', { status: 500 });
     }
 }

@@ -1,3 +1,4 @@
+// to get the user session in server components
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/utils/authOptions';
 
