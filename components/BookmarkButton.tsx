@@ -12,7 +12,7 @@ const BookmarkButton = ({ property }: any) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userId) {
+    if (!userId) {   // if user not logged in no need to call the api funciton below
       setLoading(false);
       return;
     }
