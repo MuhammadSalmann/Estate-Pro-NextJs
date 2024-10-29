@@ -14,7 +14,7 @@ import PropertyContactForm from "@/components/PropertyContactForm";
 
 const PropertyPage = () => {
   const { id } = useParams();
-  const [property, setProperty] = useState(null);
+  const [property, setProperty] = useState(null) as any;
   const [loading, setLoading] = useState(true);
   // console.log(property)
 

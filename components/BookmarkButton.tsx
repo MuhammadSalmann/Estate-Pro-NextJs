@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { FaBookmark } from 'react-icons/fa';
 
 const BookmarkButton = ({ property }: any) => {
-  const { data: session } = useSession();
+  const { data: session } = useSession() as any;
   const userId = session?.user?.id;
 
   const [isBookmarked, setIsBookmarked] = useState(false);
