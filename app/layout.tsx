@@ -6,6 +6,7 @@ import AuthProvider from '@/components/AuthProvider'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalProvider } from '@/context/GlobalContext'
+import 'photoswipe/dist/photoswipe.css'
 
 // For SEO and this will be used in by default every page if you dont specify this in every page
 export const metadata = {
