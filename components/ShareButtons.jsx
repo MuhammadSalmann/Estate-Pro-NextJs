@@ -9,7 +9,7 @@ import {
   EmailIcon,
 } from 'react-share';
 
-const ShareButtons = ({ property }: any) => {
+const ShareButtons = ({ property }) => {
   const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${property._id}`;
 
   return (

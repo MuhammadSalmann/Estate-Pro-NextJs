@@ -34,7 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/Navbar.tsx"
-  ],
+, "components/ShareButtons.jsx", "components/PropertyMap.jsx"  ],
   "exclude": [
     "node_modules"
   ]
