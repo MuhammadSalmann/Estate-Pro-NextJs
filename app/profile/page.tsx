@@ -8,7 +8,7 @@ import Spinner from '@/components/Spinner';
 import { toast } from 'react-toastify';
 
 const ProfilePage = () => {
-  const {data: sessionUser} = useSession();
+  const {data: sessionUser} = useSession() as any;
   const ProfileName = sessionUser?.user?.name;
   const ProfileImage = sessionUser?.user?.image;
   const ProfileEmail = sessionUser?.user?.email;
