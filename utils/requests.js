@@ -1,5 +1,7 @@
 const apiDomain = process.env.NEXT_PUBLIC_DOMAIN_API || null; // for deployment issues
 
+export const dynamic = 'force-dynamic';
+
 // Fetech all properties
 async function fetchProperties({ showFeatured = false } = {}) {
   try {

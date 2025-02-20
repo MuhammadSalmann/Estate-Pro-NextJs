@@ -15,6 +15,8 @@ export const metadata = {
   keywords: 'rental, property, estate, landlord, rent, lease, find properties, find rentals, estate pro',
 }
 
+export const dynamic = 'force-dynamic';
+
 type MainLayoutProps = {
   children: ReactNode
 }
