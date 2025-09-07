@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const PropertyAddForm = () => {
-  const [mounted, setMounted] = useState(false); // for warning msg
+  const mounted = useRef(false); // for warning msg
   interface Location {
     street: string;
     city: string;
@@ -122,7 +122,10 @@ const PropertyAddForm = () => {
   }
 
   useEffect(() => {
-    setMounted(true); // for warning msg
+    if(!mounted.current) { // for warning msg
+      mounted.current = true;
+      return;
+    }
   }, []);
 
   return (
